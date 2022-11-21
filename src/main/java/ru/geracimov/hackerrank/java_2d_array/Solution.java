@@ -55,6 +55,23 @@ public class Solution {
             }
         });
 
+        System.out.println(maxHourglassSize(arr));
         bufferedReader.close();
+    }
+
+    private static int maxHourglassSize(List<List<Integer>> arr) {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i <= 3; i++) {
+            for (int j = 0; j <= 3; j++) {
+                List<Integer> line1 = arr.get(i);
+                List<Integer> line2 = arr.get(i + 1);
+                List<Integer> line3 = arr.get(i + 2);
+                int sum = line1.get(j) + line1.get(j + 1) + line1.get(j + 2)
+                        + line2.get(j + 1)
+                        + line3.get(j) + line3.get(j + 1) + line3.get(j + 2);
+                max = Math.max(max, sum);
+            }
+        }
+        return max;
     }
 }
